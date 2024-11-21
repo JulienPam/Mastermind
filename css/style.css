@@ -1,0 +1,161 @@
+html{
+    width: 100vw;
+    height: 100vh;
+    background: url(../img/bg.jpg);
+}
+
+body{
+    width : 95%;
+    height : 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    #PlateaudeJeu{
+        width: 100%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
+            #container{
+                width : 85%;
+                height: 100%;
+                display: flex;
+            }
+
+            #ZoneDeProposition{
+                width: 90%;
+                height: 100%;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(10, 1fr);
+                background-color: rgb(12, 12, 99);
+                border-radius: 2%;
+            }
+
+            .proposition{
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                margin-left: 3vh;
+                margin-top: 1vh;
+            }
+
+            #ZoneDeVerification{
+                background-color: rgb(36, 20, 20);
+                border-radius: 20px;
+                width: 20vw;
+                height: 70vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                #pionBienPlacé, #pionMalPlacé{
+                    width:50%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    .RondDeVerif{
+                        width: 25px;
+                        height: 25px;
+                        margin-bottom: 1.4vh;
+                        border: solid black 2px;
+                        border-radius: 50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 6dvh;
+                    }
+                
+            #BoiteDeJetons{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 70%;
+                height: 10%;
+                border-radius: 5px;
+                background-color: gold;
+            }
+
+                .pionBoitedeJeu{
+                    border-radius: 50%;
+                    width:35px;
+                    height: 35px;
+                }
+
+            .score-dynamique{
+                font-size: 95%;
+            }
+
+
+    #rouge{
+        background-color: red;
+    }
+
+    #bleu{
+        background-color: blue;
+    }
+
+    #vert{
+        background-color: green;
+    }
+
+    #jaune{
+        background-color: yellow;
+    }
+
+    #blanc{
+        background-color: white;
+    }
+
+    #noir{
+        background-color: black;
+    }
+
+/* CSS de la boite de dialogue visible en fin de partie */
+
+#fenetreMessage{
+    text-align: center;
+    position:absolute;
+    width:80vw;
+    height: 60vh;
+    background-color: rgb(132, 66, 66);
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+    .boutonRejouer{
+        width:70vw;
+        height: 20vh;
+        border-radius: 20px;
+        background-color: green;
+        color: white;
+        font-size: 220%;
+    }
+
+@media screen and (min-width:600px) and (max-width:1000px) {
+    .RondDeVerif{
+    width:50px;
+    height: 50px;
+    }
+}
+
+@media screen and (min-width:1001px){
+    .RondDeVerif{
+    width:50px;
+    height: 50px;
+    }
+}
