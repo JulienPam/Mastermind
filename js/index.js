@@ -125,42 +125,80 @@ for (let i = 1; i <= 10; i++) {
 //Création de la proposition du joueur//
 //-----------------------------------//
 
-// Click sur les jetons
+// Création de la grille de proposition
+const ZoneDeProposition = document.getElementById('ZoneDeProposition');
+ZoneDeProposition.innerHTML = ''; // Nettoyer la zone de proposition
 
-const click = document.getElementsByClassName('proposition');
+// Créer les 40 pions (10 lignes x 4 colonnes)
+for (let i = 0; i < 40; i++) {
+    const caseProposition = document.createElement('div');
+    caseProposition.className = 'proposition';
+    caseProposition.id = `proposition-${i}`;
+    ZoneDeProposition.appendChild(caseProposition);
+}
 
-for (let i = 0; i < click.length; i++) {
-    click[i].addEventListener('click', function jouer() {
-        proposition.push(this.id);
-        document.getElementById('ZoneDeProposition').innerHTML += `<div class="proposition" id="${this.id}"></div>`;
-        console.log(proposition);
+// Click sur les jetons de couleur
+const jetons = document.getElementsByClassName('pionBoitedeJeu');
+let pionActuel = 0;
 
-//-------------------------------//
-//Vérification de la proposition//
-//-----------------------------//
-
-        if (proposition.length === 4) {
-            if (JSON.stringify(proposition) === JSON.stringify(result)) {
-                document.getElementById("fenetreMessage").style.display='flex';
-                document.getElementById("fenetreMessage").innerHTML= '<h1 class = "h1fenetreMessage"> Vous avez Gagné</h1>';
-                document.getElementById("fenetreMessage").innerHTML+= '<button class="boutonRejouer">Recommencer</button>';
-                rejouer();
-
-            } else {
-                if (compteurPartie === 10) {
-                    document.getElementById("fenetreMessage").style.display='flex';
-                    document.getElementById("fenetreMessage").innerHTML= '<h1 class = "h1fentreMessage"> Vous avez Perdu</h1>';
-                    document.getElementById("fenetreMessage").innerHTML += `<h2> La combinaison était : ${result}</h2>`;
-                    document.getElementById("fenetreMessage").innerHTML+= '<button class="boutonRejouer">Recommencer</button>';
-                    rejouer();
-
-                } else {
-                    document.getElementById("vert"+compteurPartie).innerHTML=(compteurBienplacé(result, proposition));
-                    document.getElementById("orange"+compteurPartie).innerHTML=(compteurMalPlacé(result, proposition));
-                    compteurPartie += 1;
+for (let i = 0; i < jetons.length; i++) {
+    jetons[i].addEventListener('click', function() {
+        if (pionActuel < 40) {
+            const couleur = this.id; // Récupère l'ID du pion cliqué (rouge, bleu, vert, etc.)
+            proposition.push(couleur);
+            
+            // Mettre à jour l'apparence du pion de proposition
+            const pionProposition = document.getElementById(`proposition-${pionActuel}`);
+            if (pionProposition) {
+                // Applique la couleur correspondante au pion
+                switch(couleur) {
+                    case 'rouge':
+                        pionProposition.style.backgroundColor = 'red';
+                        break;
+                    case 'bleu':
+                        pionProposition.style.backgroundColor = 'blue';
+                        break;
+                    case 'vert':
+                        pionProposition.style.backgroundColor = 'green';
+                        break;
+                    case 'jaune':
+                        pionProposition.style.backgroundColor = 'yellow';
+                        break;
+                    case 'blanc':
+                        pionProposition.style.backgroundColor = 'white';
+                        break;
+                    case 'noir':
+                        pionProposition.style.backgroundColor = 'black';
+                        break;
                 }
+                console.log(`Couleur ${couleur} appliquée au pion ${pionActuel}`);
             }
-            proposition = []; // Réinitialiser le tableau après chaque essai
+            
+            pionActuel++;
+            
+            // Si on a rempli une ligne (4 pions)
+            if (proposition.length === 4) {
+                // Vérifier la proposition
+                if (JSON.stringify(proposition) === JSON.stringify(result)) {
+                    document.getElementById("fenetreMessage").style.display = 'flex';
+                    document.getElementById("fenetreMessage").innerHTML = '<h1 class="h1fenetreMessage">Vous avez Gagné</h1>';
+                    document.getElementById("fenetreMessage").innerHTML += '<button class="boutonRejouer">Recommencer</button>';
+                    rejouer();
+                } else {
+                    if (compteurPartie === 10) {
+                        document.getElementById("fenetreMessage").style.display = 'flex';
+                        document.getElementById("fenetreMessage").innerHTML = '<h1 class="h1fentreMessage">Vous avez Perdu</h1>';
+                        document.getElementById("fenetreMessage").innerHTML += `<h2>La combinaison était : ${result}</h2>`;
+                        document.getElementById("fenetreMessage").innerHTML += '<button class="boutonRejouer">Recommencer</button>';
+                        rejouer();
+                    } else {
+                        document.getElementById("vert" + compteurPartie).innerHTML = (compteurBienplacé(result, proposition));
+                        document.getElementById("orange" + compteurPartie).innerHTML = (compteurMalPlacé(result, proposition));
+                        compteurPartie++;
+                    }
+                }
+                proposition = [];
+            }
         }
     });
 }

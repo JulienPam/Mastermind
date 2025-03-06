@@ -1,62 +1,92 @@
 html{
     width: 100vw;
     height: 100vh;
-    background: url(../img/bg.jpg);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
-    width : 95%;
-    height : 95%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
 }
 
     #PlateaudeJeu{
-        width: 100%;
-        height: 80%;
+        width: 95%;
+        height: 90vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 2vh;
 }
 
             #container{
-                width : 85%;
-                height: 100%;
+                width: 100%;
+                height: 80%;
                 display: flex;
+                flex-direction: row;
+                gap: 2vw;
             }
 
             #ZoneDeProposition{
-                width: 90%;
+                width: 80%;
                 height: 100%;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(10, 1fr);
-                background-color: rgb(12, 12, 99);
-                border-radius: 2%;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 15px;
+                padding: 1vh;
+                gap: 1vh;
+                box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .ligne-proposition {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 10%;
             }
 
             .proposition{
-                width: 25px;
-                height: 25px;
+                width: 5vh;
+                height: 5vh;
                 border-radius: 50%;
-                margin-left: 3vh;
-                margin-top: 1vh;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+                margin: auto;
+                position: relative;
+                z-index: 1;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             }
 
             #ZoneDeVerification{
-                background-color: rgb(36, 20, 20);
-                border-radius: 20px;
-                width: 20vw;
-                height: 70vh;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 15px;
+                width: 20%;
+                height: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
 
                 #pionBienPlacé, #pionMalPlacé{
-                    width:50%;
+                    width: 50%;
                     height: 100%;
                     display: flex;
                     flex-direction: column;
@@ -65,31 +95,48 @@ body{
                 }
 
                     .RondDeVerif{
-                        width: 25px;
-                        height: 25px;
-                        margin-bottom: 1.4vh;
-                        border: solid black 2px;
-                        border-radius: 50px;
+                        width: 3.9vh;
+                        height: 3.9vh;
+                        margin: 1vh 0;
+                        border: 2px solid rgba(255, 255, 255, 0.2);
+                        border-radius: 50%;
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        font-size: 6dvh;
+                        font-size: 1.5vh;
+                        min-width: 26px;
+                        min-height: 26px;
+                        background: rgba(255, 255, 255, 0.1);
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
                     }
                 
             #BoiteDeJetons{
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
-                width: 70%;
-                height: 10%;
-                border-radius: 5px;
-                background-color: gold;
+                width: 80%;
+                height: 15%;
+                border-radius: 15px;
+                background: rgba(255, 215, 0, 0.2);
+                margin-top: 2vh;
+                backdrop-filter: blur(5px);
+                border: 1px solid rgba(255, 215, 0, 0.3);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             }
 
                 .pionBoitedeJeu{
                     border-radius: 50%;
-                    width:35px;
-                    height: 35px;
+                    width: 8vh;
+                    height: 8vh;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                    border: 2px solid rgba(255, 255, 255, 0.2);
+                }
+
+                .pionBoitedeJeu:hover {
+                    transform: scale(1.1) translateY(-5px);
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
                 }
 
             .score-dynamique{
@@ -125,37 +172,124 @@ body{
 
 #fenetreMessage{
     text-align: center;
-    position:absolute;
-    width:80vw;
-    height: 60vh;
-    background-color: rgb(132, 66, 66);
+    position: fixed;
+    width: 90vw;
+    height: 80vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
     .boutonRejouer{
-        width:70vw;
-        height: 20vh;
+        width: 80%;
+        height: 15%;
         border-radius: 20px;
-        background-color: green;
+        background: linear-gradient(45deg, #00b09b, #96c93d);
         color: white;
-        font-size: 220%;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-@media screen and (min-width:600px) and (max-width:1000px) {
-    .RondDeVerif{
-    width:50px;
-    height: 50px;
+    .boutonRejouer:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    #container {
+        flex-direction: row;
+        height: 70%;
+        position: relative;
+        gap: 1vw;
+    }
+
+    #ZoneDeProposition {
+        width: 80%;
+        height: 100%;
+    }
+
+    #ZoneDeVerification {
+        width: 20%;
+        height: 100%;
+        position: relative;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        background-color: rgb(36, 20, 20);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .pionBoitedeJeu {
+        width: 6vh;
+        height: 6vh;
+    }
+
+    .RondDeVerif {
+        width: 3.25vh;
+        height: 3.25vh;
+        min-width: 23px;
+        min-height: 23px;
+        font-size: 1.2vh;
+    }
+
+    .proposition {
+        width: 4vh;
+        height: 4vh;
     }
 }
 
-@media screen and (min-width:1001px){
-    .RondDeVerif{
-    width:50px;
-    height: 50px;
+@media screen and (max-width: 480px) {
+    #PlateaudeJeu {
+        height: 100vh;
+    }
+
+    #container {
+        gap: 0.5vw;
+    }
+
+    #ZoneDeProposition {
+        width: 75%;
+    }
+
+    #ZoneDeVerification {
+        width: 25%;
+    }
+
+    .proposition {
+        width: 3vh;
+        height: 3vh;
+    }
+
+    .RondDeVerif {
+        width: 2.6vh;
+        height: 2.6vh;
+        min-width: 20px;
+        min-height: 20px;
+        font-size: 1vh;
+    }
+
+    .pionBoitedeJeu {
+        width: 5vh;
+        height: 5vh;
+    }
+
+    .boutonRejouer {
+        font-size: 1.5rem;
     }
 }
