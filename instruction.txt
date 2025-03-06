@@ -1,5 +1,0 @@
-J'ai commencé a créer une application du jeu mastermind ou il faut retrouver une combinaison de couleur pour gagner la partie .
-
-Je souhaiterais que tu m'aides a finaliser ce projet sur les points suivants :
-
-	-j'aimerais que le site soit responsive, qu'il s'adapte parfaitement à toute les tailles d'écran sachant que il s'agit d'un jeu donc ca doit rester visuel et pratique pour l'user
